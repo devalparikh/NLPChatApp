@@ -12,7 +12,9 @@ export function Chatbox(props: Props) {
 
 
 
-        <div className="card">
+        <div className="chat-card card">
+
+            {/* Chat log */}
             <h2 className="invert-color">Chat</h2>
             <div className="scrollable chat-box">
 
@@ -30,6 +32,12 @@ export function Chatbox(props: Props) {
 
                 <div className="message me">Great, I am so excited to learn!</div>
 
+            </div>
+
+            {/* New chat message */}
+            <div className="new-chat invert-color">
+                <input className="chat-input" placeholder="Enter chat message here"></input>
+                <button className="submit-button">Send</button>
             </div>
         </div>
     );
