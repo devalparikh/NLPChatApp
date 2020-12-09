@@ -1,0 +1,44 @@
+.invert-color {
+    background-color: white;
+    color: #27292b;
+}
+
+.card {
+    background-color: white;
+    color: #27292b;
+    padding: 10px;
+    margin: 20px;
+    max-height: 400px;
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.username-input {
+    border-style: solid;
+    margin: 20px;
+    width: 300px;
+}
+
+.submit-button {
+    margin: 10px;
+    border-style: solid;
+    padding: 10px 30px 10px 30px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+.submit-button:hover {
+    background-color: gray;
+}

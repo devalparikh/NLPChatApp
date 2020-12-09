@@ -1,0 +1,37 @@
+* {
+  background-color: #27292b;
+  color: white;
+  font-family: 'system-ui';
+  font-weight: 200;
+  font-size: 40px;
+  text-align: center;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.subsection {
+  margin: auto;
+  margin-top: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+h1 {
+  margin-top: 20px;
+  font-weight: 800;
+  font-size: 60px;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+h3 {
+  margin-top: -20px;
+  font-weight: 200;
+  font-size: 40px;
+}

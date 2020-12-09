@@ -1,0 +1,36 @@
+
+.chat-box {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.message {
+    margin: 10px;
+    max-width: 350px;
+    background-color: gray;
+    border-radius: 20px;
+    padding: 5px 15px 5px 15px;
+    font-size: 30px;
+    display: block;
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .message {
+        max-width: 200px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+}
+
+.you {
+    margin-left: 0;
+    margin-right: auto;
+
+}
+
+.me {
+    margin-left: auto;
+    margin-right: 0;
+
+}
