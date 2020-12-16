@@ -8,9 +8,10 @@ import { Userslist } from './userslist/Userslist';
 import { Sentiment } from './sentiment/Sentiment';
 
 import io from "socket.io-client";
+
 const PORT = process.env.PORT || 8000;
-const URL = process.env.URL || `http://localhost:`;
-const ENDPOINT = `${URL}${PORT}/`;
+const URL = process.env.NODE_ENV === 'production' ? 'https://nlp-chat.herokuapp.com/' : 'http://localhost:'
+const ENDPOINT = `${URL}${PORT}`;
 
 
 interface Props {
