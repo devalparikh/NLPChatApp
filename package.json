@@ -1,0 +1,26 @@
+{
+  "name": "nlp_chat_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" ",
+    "start": "concurrently \"cd backend && npm run start\" \"cd nlp-chat-client && npm start\" ",
+    "build": "concurrently \"cd backend && npm run build\" \"cd nlp-chat-client && npm run build\" ",
+    "heroku-postbuild": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devalparikh/NLP_Chat_App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devalparikh/NLP_Chat_App/issues"
+  },
+  "homepage": "https://github.com/devalparikh/NLP_Chat_App#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
