@@ -8,7 +8,7 @@
     "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" ",
     "start": "concurrently \"cd backend && npm run start\" \"cd nlp-chat-client && npm start\" ",
     "build": "concurrently \"cd backend && npm run build\" \"cd nlp-chat-client && npm run build\" ",
-    "heroku-postbuild": "npm install"
+    "heroku-postbuild": "concurrently \"npm install\" \"cd backend && npm install\" \"cd nlp-chat-client && npm install\" "
   },
   "repository": {
     "type": "git",
