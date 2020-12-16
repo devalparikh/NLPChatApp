@@ -51,9 +51,11 @@ export function Chatbox(props: Props) {
             </div>
 
             {/* New chat message */}
-            <div className="new-chat invert-color">
-                <input className="chat-input" placeholder="Enter chat message here" value={message} onChange={event =>setMessage(event.target.value)}></input>
-                <button className="submit-button" onClick={event => sendMessage(event)}>Send</button>
+            <div>
+                <form className="invert-color">
+                    <input className="chat-input" placeholder="Enter chat message here" value={message} onChange={event =>setMessage(event.target.value)}></input>
+                    <button className="submit-button" onClick={event => sendMessage(event)}>Send</button>
+                </form>
             </div>
         </div>
     );
