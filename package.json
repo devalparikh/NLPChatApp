@@ -9,10 +9,9 @@
     "install-client": "cd nlp-chat-client && npm run install",
     "install-server": "cd backend && npm run install",
 
-    "build": "npm run build-client && npm run build-server",
-    "build-client": "cd nlp-chat-client && npm run build",
+    "build": "npm run build-client",
+    "build-client": "cd nlp-chat-client && npm run install && npm run build",
     "build-server": "cd backend && npm run build",
-    
     
     "start": "cd backend && node server.js",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" "

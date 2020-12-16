@@ -29,7 +29,7 @@ io.on("connection", socket => {
     // Send client their id
     socket.emit("your id", socket.id);
     ids.push(socket.id);
-    
+
     // New user
     socket.on('new user', body => {
         socket.username = body.Username;
@@ -59,8 +59,13 @@ io.on("connection", socket => {
 
 });
 
+app.use(express.static('../nlp-chat-client/build'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../nlp-chat-client/build', 'index.html'));
+})
+
 // Serve static assets in production (client)
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     // Set static folder
     app.use(express.static('../nlp-chat-client/build'));
     app.get('*', (req, res) => {
