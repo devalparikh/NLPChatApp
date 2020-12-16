@@ -4,3 +4,5 @@ backend/node_modules/
 node_modules/
 
 nlp-chat-client/.eslintcache
+
+backend/.env

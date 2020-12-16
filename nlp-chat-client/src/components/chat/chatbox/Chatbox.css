@@ -39,10 +39,6 @@
     background-color: rgb(56, 79, 95);
 }
 
-.new-chat {
-    
-}
-
 .chat-input {
     height: 70px;
     width: 90%;
@@ -54,4 +50,12 @@
 
 .chat-input:focus {
     border-radius: 30px;
+}
+
+.tone-bubble {
+    margin: 10px 10px 10px 0px;
+    font-size: 15px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
 }

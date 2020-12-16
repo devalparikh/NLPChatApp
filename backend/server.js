@@ -3,9 +3,20 @@ const express = require("express");
 const socket = require("socket.io");
 var cors = require('cors')
 const path = require('path');
-
 // Configure env vars in env file
 require('dotenv').config();
+
+// IBM Cloud
+const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
+const { IamAuthenticator } = require('ibm-watson/auth');
+
+const toneAnalyzer = new ToneAnalyzerV3({
+    version: '2017-09-21',
+    authenticator: new IamAuthenticator({
+        apikey: process.env.IBM_APIKEY,
+    }),
+    serviceUrl: process.env.IBM_URL,
+});
 
 const app = express();
 
@@ -38,10 +49,16 @@ io.on("connection", socket => {
     });
 
     // Client send message, emit server
-    socket.on("send message", body => {
-        getSentiment(body.body);
-        // Send to all clients (using io, not socket)
-        io.emit("message", body);
+    socket.on("send message", message => {
+        getSentiment(message.body)
+            .then(tone => {
+                message.tone = tone;
+
+                // Send to all clients (using io, not socket)
+                io.emit("message", message);
+            });
+            // FUTURE: Could asyncronously send message and make ML prediction, 
+            // then tag along predicted tone using UUID mapping of message
     });
 
     // Client disconnect
@@ -53,12 +70,28 @@ io.on("connection", socket => {
     });
 
     // Update list of users
-    const updateUsernames = async () => {
+    let updateUsernames = async () => {
         io.sockets.emit('get users', users);
     }
 
-    const getSentiment = async (input_text) => {
-        console.log(input_text);
+    let getSentiment = async (input_text) => {
+        let tone = '';
+
+        // Get sentiment using IBM Cloud Tone Analyzer API  
+        const toneParams = {
+            toneInput: { 'text': input_text },
+            contentType: 'application/json',
+        };
+
+        await toneAnalyzer.tone(toneParams)
+            .then(toneAnalysis => {
+                console.log(JSON.stringify(toneAnalysis, null, 2));
+                tone = toneAnalysis.result.document_tone.tones[0].tone_name || '';
+            })
+            .catch(err => {
+                console.log('error:', err);
+            });
+        return tone;
     }
 
 });
