@@ -39,7 +39,7 @@ io.on("connection", socket => {
 
     // Client send message, emit server
     socket.on("send message", body => {
-
+        getSentiment(body.body);
         // Send to all clients (using io, not socket)
         io.emit("message", body);
     });
@@ -53,8 +53,12 @@ io.on("connection", socket => {
     });
 
     // Update list of users
-    function updateUsernames() {
+    const updateUsernames = async () => {
         io.sockets.emit('get users', users);
+    }
+
+    const getSentiment = async (input_text) => {
+        console.log(input_text);
     }
 
 });
@@ -74,3 +78,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 server.listen(port, () => console.log(`server is running on port ${port}`));
+
