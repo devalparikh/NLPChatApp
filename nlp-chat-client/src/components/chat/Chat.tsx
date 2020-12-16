@@ -9,7 +9,8 @@ import { Sentiment } from './sentiment/Sentiment';
 
 import io from "socket.io-client";
 const PORT = process.env.PORT || 8000;
-const ENDPOINT = `http://localhost:${PORT}/`;
+const URL = process.env.URL || `http://localhost:`;
+const ENDPOINT = `${URL}${PORT}/`;
 
 
 interface Props {
