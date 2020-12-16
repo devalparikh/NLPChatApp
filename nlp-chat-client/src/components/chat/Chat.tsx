@@ -12,7 +12,7 @@ import io from "socket.io-client";
 const PORT = process.env.PORT || 8000;
 const URL = process.env.NODE_ENV === 'production' ? 'https://nlp-chat.herokuapp.com/' : 'http://localhost:'
 const ENDPOINT = `${URL}${PORT}`;
-
+console.log(ENDPOINT);
 
 interface Props {
 
