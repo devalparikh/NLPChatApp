@@ -8,7 +8,8 @@ import { Userslist } from './userslist/Userslist';
 import { Sentiment } from './sentiment/Sentiment';
 
 import io from "socket.io-client";
-const ENDPOINT = 'http://localhost:8000';
+const PORT = process.env.PORT || 8000;
+const ENDPOINT = `http://localhost:${PORT}/`;
 
 
 interface Props {

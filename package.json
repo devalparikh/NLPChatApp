@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix backend && npm install --prefix nlp-chat-client && npm run build --prefix nlp-chat-client  && npm run build --prefix backend",
     "start": "cd backend && node server.js",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" "
