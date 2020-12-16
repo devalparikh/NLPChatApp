@@ -59,5 +59,13 @@ io.on("connection", socket => {
 
 });
 
+// Serve static assets in production (client)
+if(process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('../nlp-chat-client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../nlp-chat-client/build', 'index.html'));
+    })
+}
 
 server.listen(port, () => console.log(`server is running on port ${port}`));

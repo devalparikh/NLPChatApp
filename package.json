@@ -5,16 +5,23 @@
   "main": "index.js",
   "scripts": {
     
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" ",
-    "start": "concurrently \"cd backend && npm run start\" \"cd nlp-chat-client && npm start\" ",
-    "build": "concurrently \"cd backend && npm run build\" \"cd nlp-chat-client && npm run build\" ",
-    "heroku-postbuild": "concurrently \"npm install\" \"cd backend && npm install\" \"cd nlp-chat-client && npm install\" "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install & npm run install-client && npm run install-server",
+    "install-client": "cd nlp-chat-client && npm run install",
+    "install-server": "cd backend && npm run install",
+
+    "build": "npm run build-client && npm run build-server",
+    "build-client": "cd nlp-chat-client && npm run build",
+    "build-server": "cd backend && npm run build",
+    
+    
+    "start": "cd backend && node server.js",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd nlp-chat-client && npm start\" "
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devalparikh/NLP_Chat_App.git"
   },
-  "author": "",
+  "author": "Deval Parikh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/devalparikh/NLP_Chat_App/issues"
