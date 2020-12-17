@@ -27,6 +27,7 @@ export function Chat(props: Props) {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
     const [users, setUsers] = useState([]);
+    const [sentiment, setSentiment] = useState(0.5);
 
     const socketRef = useRef();
 
@@ -36,7 +37,7 @@ export function Chat(props: Props) {
         // @ts-ignore
         socketRef.current = io.connect(ENDPOINT, { transports: ['websocket'] });
 
-        
+
         // Get id from server
         // @ts-ignore
         socketRef.current.on('your id', id => {
@@ -55,6 +56,12 @@ export function Chat(props: Props) {
         socketRef.current.on('get users', (users) => {
             console.log(users);
             setUsers(users);
+        });
+
+        // Get updated sentiment from server
+        // @ts-ignore
+        socketRef.current.on('get sentiment', (sentiment) => {
+            setSentiment(sentiment);
         });
 
     }, []);
@@ -94,9 +101,9 @@ export function Chat(props: Props) {
 
 
             {
-                EnteredUsername 
-                
-                ?
+                EnteredUsername
+
+                    ?
 
                     <Container>
                         <h3>Welcome, {Username}!</h3>
@@ -105,7 +112,7 @@ export function Chat(props: Props) {
                                 <Userslist users={users} />
                             </Col>
                             <Col>
-                                <Sentiment />
+                                <Sentiment sentiment={sentiment} />
                             </Col>
                         </Row>
                         <Row>
